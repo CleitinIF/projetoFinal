@@ -58,6 +58,13 @@ namespace ProjetoFinal
             }
         }
 
+        private bool titleIsEmpty()
+        {
+            String title = mTitle.Text.ToString();
+
+            return String.IsNullOrWhiteSpace(title);
+        }
+
         private void insertRow()
         {
             String title = mTitle.Text.ToString();
@@ -122,6 +129,11 @@ namespace ProjetoFinal
 
         private void mSubmit_Click(object sender, EventArgs e)
         {
+            if(titleIsEmpty())
+            {
+                MessageBox.Show("Não é possivel salvar uma tarefa com o título vazio!");
+                return;
+            }
             if(editingRowId > 0)
             {
                 updateRow();
